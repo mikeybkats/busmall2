@@ -27,22 +27,28 @@ function imageLoad(){
 
   var indexCenter = randNum(0, allProducts.length);
   imageCenter.src = allProducts[indexCenter].path;
-  if (indexCenter.src === indexLeft.src){
-    var indexCenter = randNum(0, allProducts.length);
-    imageCenter.src = allProducts[indexCenter].path;
-  }
 
   var indexRight = randNum(0, allProducts.length);
   imageRight.src = allProducts[indexRight].path;
+
+  while (indexLeft === indexCenter || indexCenter === indexRight || indexLeft === indexRight){
+    var indexCenter = randNum(0, allProducts.length);
+    imageCenter.src = allProducts[indexCenter].path;
+    var indexRight = randNum(0, allProducts.length);
+    imageRight.src = allProducts[indexRight].path;
+  }
 }
 
 function imageClick(event){
-
+  imageLoad();
 }
 
 pushToProductArray();
-pushToProductArray();
 imageLoad();
+
+imageLeft.addEventListener('click', imageClick);
+imageCenter.addEventListener('click', imageClick);
+imageRight.addEventListener('click', imageClick);
 
 // set up click event to reload images and log clicks
 // set up a views logger so that ever time an image is loaded we tally its views
