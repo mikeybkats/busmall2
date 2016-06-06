@@ -8,7 +8,7 @@ As a member of the market research team I need to have the focus group subjects 
 #### Stakeholder 2 - Development team
 As a developer I need to display the three marketing images at random side by side.
 As a developer I need to make sure there are no duplicates being displayed.  
-As a developer I will need to keep track of the number times each image is displayed and clicked to make the correct calculation.
+As a developer I will need to keep track of the number times each image is displayed and clicked in a constructor function to make the correct calculation
 As a developer I need to display the results to the user only after they have finished the test.
 
 #### Stakeholder 3 - Focus group participant

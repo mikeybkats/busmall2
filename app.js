@@ -50,7 +50,8 @@ function imageClick(event){
   for ( var i = 0; i < allProducts.length; i++){
     if (event.target.alt === allProducts[i].name){
       allProducts[i].clicks += 1;
-      console.log(allProducts[i].name + ' has been clicked.');
+      console.log(allProducts[i].name + ' has been viewed ' + allProducts[i].views + ' times.');
+      console.log(allProducts[i].name + ' has been clicked ' + allProducts[i].clicks + ' times.');
     }
   }
   imageLoad();
