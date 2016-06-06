@@ -1,3 +1,4 @@
+var imageContainer = document.getElementById('image-container');
 var imageLeft = document.getElementById('left');
 var imageCenter = document.getElementById('center');
 var imageRight = document.getElementById('right');
@@ -23,13 +24,14 @@ function randNum (min, max) {
 
 function imageLoad(){
   var indexLeft = randNum(0, allProducts.length);
-  imageLeft.src = allProducts[indexLeft].path;
-
   var indexCenter = randNum(0, allProducts.length);
-  imageCenter.src = allProducts[indexCenter].path;
-
   var indexRight = randNum(0, allProducts.length);
+  imageLeft.src = allProducts[indexLeft].path;
+  imageCenter.src = allProducts[indexCenter].path;
   imageRight.src = allProducts[indexRight].path;
+  imageLeft.alt = allProducts[indexLeft].name;
+  imageCenter.alt = allProducts[indexCenter].name;
+  imageRight.alt = allProducts[indexRight].name;
 
   while (indexLeft === indexCenter || indexCenter === indexRight || indexLeft === indexRight){
     var indexCenter = randNum(0, allProducts.length);
@@ -37,18 +39,27 @@ function imageLoad(){
     var indexRight = randNum(0, allProducts.length);
     imageRight.src = allProducts[indexRight].path;
   }
+
+  allProducts[indexLeft].views += 1;
+  allProducts[indexCenter].views += 1;
+  allProducts[indexRight].views += 1;
 }
 
 function imageClick(event){
+  console.log(event.target.alt);
+  for ( var i = 0; i < allProducts.length; i++){
+    if (event.target.alt === allProducts[i].name){
+      allProducts[i].clicks += 1;
+      console.log(allProducts[i].name + ' has been clicked.');
+    }
+  }
   imageLoad();
 }
 
 pushToProductArray();
 imageLoad();
 
-imageLeft.addEventListener('click', imageClick);
-imageCenter.addEventListener('click', imageClick);
-imageRight.addEventListener('click', imageClick);
+imageContainer.addEventListener('click', imageClick);
 
 // set up click event to reload images and log clicks
 // set up a views logger so that ever time an image is loaded we tally its views
